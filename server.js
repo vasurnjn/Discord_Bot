@@ -55,6 +55,10 @@ client.on('messageCreate', message => {
         message.reply('Im a bot made by CodeCrafters')
     
   }
+  if (commandName==='!help'){
+    message.reply('!info : for bot info')
+    
+  }
   
   
     

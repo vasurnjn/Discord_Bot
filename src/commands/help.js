@@ -34,8 +34,7 @@ module.exports.execute = async (client, message, args, send) => {
   {name: `:video_game: Games`, value: "Who doesn't love games?", inline: true},
   {name: `:dollar: Economy`, value: "Interact with economy in the bot", inline: true},
   {name: `:musical_note: Music`, value: "Music commands :notes:", inline: true},
-  {name: `:no_entry_sign: Bot-owner`, value: "My owner's commands", inline: true},
-  {name: `<:slash:873327358281650206> Other`, value: "Commands that don't fit in any other category, or I can't figure out :/", inline: true}])
+  {name: `:no_entry_sign: Bot-owner`, value: "My owner's commands", inline: true}])
   .setFooter({text: "CodeCrafters", iconURL: 'https://cdn.discordapp.com/avatars/485885170080022556/73becff6645c35fbed0f51b2bd2095e0.png?size=2048'})
 
   const extraButtons = {
@@ -78,7 +77,7 @@ const createButton = (obj = {}) => {
     return createButton({label: b, url: extraButtons[b]})
   })].flat(1)))
 
-  let msg = await message.reply({embeds: [helpEmbed], components: [rows]})
+  let msg = await message.reply({embeds: [helpEmbed]}) //  components: [rows]
 
   const filter = (interaction) => 1 === 1
   const collector = msg.createMessageComponentCollector({filter, idle: 60000})

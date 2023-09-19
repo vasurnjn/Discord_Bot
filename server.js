@@ -59,7 +59,7 @@ client.on('messageCreate', message => {
     message.reply('!info : for bot info')
     
   }
-  
+  :(   (mood fr)
   
     
     

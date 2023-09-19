@@ -3,7 +3,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #f8f8f8;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
 header {
@@ -13,21 +19,25 @@ header {
     padding: 20px 0;
 }
 
+h1 {
+    font-size: 36px;
+}
+
 main {
-    max-width: 800px;
-    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
 
 section {
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 20px;
     margin-bottom: 20px;
 }
 
 h2 {
+    font-size: 24px;
     margin-top: 0;
+    margin-bottom: 20px;
 }
 
 input[type="text"],
@@ -39,6 +49,8 @@ button {
     margin-bottom: 10px;
     padding: 10px;
     font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 button {
@@ -46,6 +58,7 @@ button {
     color: white;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 button:hover {

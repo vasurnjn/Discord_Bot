@@ -33,6 +33,25 @@ client.on('messageCreate', message => {
     message.reply("TEST")
   }
   if (commandName === 'weather') {
+        message.reply()
+  }
+  
+  if (commandName === 'hello') {
+        message.reply("hello")
+  }
+  if (commandName==='hi'){
+        message.reply("hello")
+  }
+  if (commandName==='!info') {
+        message.reply('Im a bot made by CodeCrafters')
+    
+  }
+  
+  
+  
+    
+    
+    
     
   }
   

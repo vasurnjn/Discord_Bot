@@ -1,11 +1,9 @@
-/* Reset default styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* Basic styling */
 body {
     font-family: Arial, sans-serif;
     background-color: #f0f0f0;

@@ -11,7 +11,6 @@ module.exports.execute = async (client, message, args, send) => {
   const Discord = require('discord.js')
   const { ButtonStyle } = require('discord.js')
   if (!client.application.commands.cache[0]) await client.application.commands.fetch()
-  let owner = await client.users.fetch("485885170080022556")
   let modules = client.modules
 
   function getCommands(categoryp) {
@@ -26,7 +25,7 @@ module.exports.execute = async (client, message, args, send) => {
  if (!args[0]) {
   const helpEmbed = new Discord.EmbedBuilder()
   .setColor('#7e68be')
-  .setDescription("[Documentation page](https://docs.crysto.cf/)\n\n**For help on a specific command, Use `/c help <command>`\nTo view all commands, you can type `/c help all`**\nPro tip: You can use the commands faster by pressing the Up arrow key after already using a command")
+  .setDescription("\n**For help on a specific command, Use `!help <command>`\nTo view all commands, you can type `!help all`**\nPro tip: You can use the commands faster by pressing the Up arrow key after already using a command")
   .addFields([{name: `:tools: Utility`, value: "Useful commands", inline: true}, 
   {name: `:customs:Moderation`, value: "Commands to be used by moderators", inline: true},
   {name: `:joy: Fun`, value: "Bored? Use these commands :)", inline: true},
@@ -35,14 +34,13 @@ module.exports.execute = async (client, message, args, send) => {
   {name: `:dollar: Economy`, value: "Interact with economy in the bot", inline: true},
   {name: `:musical_note: Music`, value: "Music commands :notes:", inline: true},
   {name: `:no_entry_sign: Bot-owner`, value: "My owner's commands", inline: true},
-  {name: `<:slash:873327358281650206> Other`, value: "Commands that don't fit in any other category, or I can't figure out :/", inline: true},
-  {name: '**Latest announcement**', value: (message.client.info.get('announcement') ? message.client.info.get('announcement') : 'No announcement found')}])
-  .setFooter({text: "© Crysto BOT | Developed by " + owner.tag, iconURL: 'https://cdn.discordapp.com/avatars/485885170080022556/73becff6645c35fbed0f51b2bd2095e0.png?size=2048'})
+  {name: `<:slash:873327358281650206> Other`, value: "Commands that don't fit in any other category, or I can't figure out :/", inline: true}])
+  .setFooter({text: "CodeCrafters", iconURL: 'https://cdn.discordapp.com/avatars/485885170080022556/73becff6645c35fbed0f51b2bd2095e0.png?size=2048'})
 
   const extraButtons = {
-    "Invite Bot": require("../../info.json").bot.invite,
-    "Vote": "https://discordbots.org/bot/501779668366655508/vote",
-    "Status": "https://status.crysto.cf"
+    "Invite Bot": "test",
+    "Vote": "test",
+    "Status": "test"
   }
 
   let emojis = {
@@ -123,7 +121,7 @@ if (args[0]) {
  }
  command = command.info
  const data = []
- data.push(`[**Command:** ${command.name}](https://docs.crysto.cf/crysto/commands/${command.module.toLowerCase()}#c-${command.name})`);
+ data.push(`[**Command:** ${command.name}]`);
  if (command.description) data.push(`**Description:** ${command.description}`)
   if (command.aliases) data.push(`**Aliases:** ${command.aliases.join(', ')}`)
     if (command.usage) data.push(`**Usage:** /c ${command.name} ${command.usage.map(p => (p.startsWith("_") ? `[${p.replace("_", "")}]` : `<${p}>`)).join(" ")}`)

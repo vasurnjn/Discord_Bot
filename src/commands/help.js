@@ -3,6 +3,7 @@ module.exports.info = {
   description: 'Get help with commands/modules',
   usage: ["_command"],
   cooldown: 2,
+  module: "utility"
 }
 
 module.exports.execute = async (client, message, args, send) => {
@@ -49,19 +50,35 @@ module.exports.execute = async (client, message, args, send) => {
   }
   let ordered = Object.keys(emojis).map(key => key)
   if (modules.length === ordered.length) modules = ordered
-    let separate = client.utils.chunk(modules, 5)
-  let rows = []
+  const chunk = (value, n) => {
+  let output = []
 
+  for (var i = 0; i < value.length; i += n) {
+    output.push(typeof value === 'string' ? value.substr(i, n) : value.slice(i, n + i))
+  }
+  return output
+}
+   let separate = chunk(modules, 5)
+  let rows = []
+const createButton = (obj = {}) => {
+  if (obj.id) obj.customId = obj.id
+  if (!obj.style) obj.style = ButtonStyle.Primary
+  if (obj.color) obj.style = obj.color
+  if (obj.link || obj.url) obj.style = ButtonStyle.Link
+  obj.url = obj.url ? obj.url : obj.link
+  let button = new Discord.ButtonBuilder(obj)
+  return button;
+}
   separate.forEach(r => {
     let newRow = new Discord.ActionRowBuilder()
-    .addComponents(r.map(c => client.utils.createButton({label: c, id: c, emoji: client.emojis.cache.get(emojis[c]) || emojis[c]})))
+    .addComponents(r.map(c => createButton({label: c, id: c, emoji: client.emojis.cache.get(emojis[c]) || emojis[c]})))
     rows.push(newRow)
   })
   rows.push(new Discord.ActionRowBuilder().addComponents([Object.keys(extraButtons).map((b, val) => {
-    return client.utils.createButton({label: b, url: extraButtons[b]})
+    return createButton({label: b, url: extraButtons[b]})
   })].flat(1)))
 
-  let msg = await send(message, {embeds: [helpEmbed], components: rows})
+  let msg = await message.reply({embeds: [helpEmbed], components: [rows]})
 
   const filter = (interaction) => 1 === 1
   const collector = msg.createMessageComponentCollector({filter, idle: 60000})
@@ -86,11 +103,11 @@ module.exports.execute = async (client, message, args, send) => {
     .setTitle((category.charAt(0).toUpperCase() + category.slice(1)) + " commands")
     .setDescription(await getCommands(category))
     .setColor('100255')
-    return send((i.user.id === message.author.id ? msg : i), {reply: true, embeds: [moduleInfo], components: (i.user.id === message.author.id ? [rows] : []), edit: (i.user.id === message.author.id ? true : false), ephemeral: (i.user.id === message.author.id ? false : true)})
+    if (i.user.id === message.author.id) return msg.reply({embeds: [moduleInfo], components: (i.user.id === message.author.id ? [rows] : []), edit: (i.user.id === message.author.id ? true : false), ephemeral: (i.user.id === message.author.id ? false : true)})
+    else return i.reply({embeds: [moduleInfo], components: (i.user.id === message.author.id ? [rows] : []), edit: (i.user.id === message.author.id ? true : false), ephemeral: (i.user.id === message.author.id ? false : true)})
 
   })
   collector.on('end', () => {
-    send(msg, {edit: true, components: client.utils.disableAllComponents(msg.components)})
   })
 }
 
@@ -100,13 +117,13 @@ else if (modules.includes(args[0].toLowerCase())) {
   .setColor(100255)
   .setDescription(message.client.commands.map(c => c.info.name).join(', '))
   .setFooter('The commands are shown without prefix')
-  return send(message, allCommands)
+  return message.reply({embeds: allCommands})
 }
 let moduleInfo = new Discord.EmbedBuilder()
 .setTitle((args[0].charAt(0).toUpperCase() + args[0].slice(1)) + " commands")
 .setDescription(await getCommands(args[0].toLowerCase()))
 .setColor('100255')
-return send(message, moduleInfo)
+return message.reply({embeds: [moduleInfo]})
 }
 
 if (args[0]) {
@@ -117,7 +134,7 @@ if (args[0]) {
    let unknownCommand = new Discord.EmbedBuilder()
    .setColor(633333)
    .setDescription('"' + args[0] + '" command/module was not found.')
-   return send(message, unknownCommand)
+   return message.reply({embeds: unknownCommand})
  }
  command = command.info
  const data = []
@@ -132,6 +149,6 @@ if (args[0]) {
         .setTitle(`Command Info`)
         .setDescription(data.join("\n"))
         .setFooter({text:'Command\'s module: ' + command.module})
-        send(message, help)
+        message.reply({embeds: help})
       }
     }

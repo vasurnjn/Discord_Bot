@@ -1,7 +1,8 @@
-/* Reset some default styles */
-body, h1, h2, p {
+/* Reset default styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 /* Basic styling */
@@ -13,7 +14,7 @@ body {
 header {
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
+    padding: 10px;
 }
 
 nav ul {
@@ -34,6 +35,7 @@ main {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    background-color: #fff;
 }
 
 .hero {
@@ -58,9 +60,7 @@ main {
 }
 
 .content {
-    background-color: #fff;
     padding: 20px;
-    margin-top: 20px;
 }
 
 footer {

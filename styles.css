@@ -1,66 +1,71 @@
-/* styles.css */
-body {
-    font-family: Arial, sans-serif;
+/* Reset some default styles */
+body, h1, h2, p {
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8;
 }
 
-.container {
+/* Basic styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+main {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
 }
 
-header {
-    background-color: #333;
-    color: white;
+.hero {
+    background-image: url('your-hero-image.jpg');
+    background-size: cover;
     text-align: center;
-    padding: 20px 0;
+    padding: 100px 0;
+    color: #fff;
 }
 
-h1 {
-    font-size: 36px;
-}
-
-main {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-}
-
-section {
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 24px;
-    margin-top: 0;
-    margin-bottom: 20px;
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-button {
-    display: block;
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
+.cta-button {
+    display: inline-block;
+    padding: 10px 20px;
     background-color: #333;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    color: #fff;
+    text-decoration: none;
+    margin-top: 20px;
 }
 
-button:hover {
+.cta-button:hover {
     background-color: #555;
+}
+
+.content {
+    background-color: #fff;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+footer {
+    text-align: center;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
 }

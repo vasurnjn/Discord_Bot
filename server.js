@@ -1,4 +1,4 @@
-
+var weather= require('weather-js')
 const Discord = require('discord.js')
 const client = new Discord.Client({
   intents: ['Guilds', 'GuildMessages', 'MessageContent']
@@ -33,7 +33,16 @@ client.on('messageCreate', message => {
     message.reply("TEST")
   }
   if (commandName === 'weather') {
-        message.reply()
+      
+  weather.find({search: 'Vellore, India', degreeType: 'C'}, function(err, result) {
+  if(err) console.log(err);
+ 
+  console.log(JSON.stringify(result, null, 2));
+});
+  
+  
+  
+  
   }
   
   if (commandName === 'hello') {
@@ -48,12 +57,10 @@ client.on('messageCreate', message => {
   }
   
   
-  
     
     
     
     
-  }
   
 
   

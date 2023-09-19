@@ -56,15 +56,21 @@ client.on('messageCreate', message => {
     
   }
   if (commandName==='!help'){
-    message.reply('!info : for bot info')
-    
+  const helpEmbed = new Discord.EmbedBuilder()
+  .setColor('#7e68be')
+  .setDescription("https://codecrafters-hackbattle.glitch.me/")
+  .addFields([{name: `:tools: Utility`, value: "Useful commands", inline: true}, 
+  {name: `:customs:Moderation`, value: "Commands to be used by moderators", inline: true},
+  {name: `:joy: Fun`, value: "Bored? Use these commands :)", inline: true},
+  {name: `:camera: Image`, value: "Commands to generate images!", inline: true},
+  {name: `:video_game: Games`, value: "Who doesn't love games?", inline: true},
+  {name: `:dollar: Economy`, value: "Interact with economy in the bot", inline: true},
+  {name: `:musical_note: Music`, value: "Music commands :notes:", inline: true},
+  {name: `:no_entry_sign: Bot-owner`, value: "My owner's commands", inline: true},
+  {name: `<:slash:873327358281650206> Other`, value: "Commands that don't fit in any other category, or I can't figure out :/", inline: true}])
+  .setFooter({text: "CodeCrafters BOT", iconURL: 'https://cdn.discordapp.com/avatars/485885170080022556/73becff6645c35fbed0f51b2bd2095e0.png?size=2048'})
+  message.reply({embeds:[helpEmbed]})
   }
-  :(   (mood fr)
-  
-    
-    
-    
-    
   
 
   

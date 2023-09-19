@@ -21,7 +21,7 @@ client.on('message', message => {
   
   (async () => {
 	const readdir = require('util').promisify(fs.readdir)
-	const categories = await readdir('./src/commands/')
+7	const categories = await readdir('./src/commands/')
 	categories.forEach(category => {
 		if (category.endsWith('.js')) return;
 		const commandFiles = fs.readdirSync(`./src/commands/${category}/`).filter(file => file.endsWith('.js'))

@@ -1,4 +1,3 @@
-var weather= require('weather-js')
 const Discord = require('discord.js')
 const client = new Discord.Client({
   intents: ['Guilds', 'GuildMessages', 'MessageContent']
@@ -6,10 +5,13 @@ const client = new Discord.Client({
 const fs = require('fs')
 client.commands = new Discord.Collection()
 client.modules = []
+
+
 const express = require('express')
 const app = express()
 const port = 3000
 const path = require('path');
+
 const dotenv = require('dotenv')
 dotenv.config()
 

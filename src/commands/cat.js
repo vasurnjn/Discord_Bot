@@ -8,9 +8,11 @@ module.exports.info = {
   module: "image"
 }
 
+const fetch = require("node-fetch")
+
 module.exports.execute = async (client, message, args, send) => {
 
-	const r = await client.fetch('http://thecatapi.com/api/images/get?format=src&type=png')
+	const r = await fetch('http://thecatapi.com/api/images/get?format=src&type=png')
 		if (r.status === 200) {
 			const embed = new Discord.EmbedBuilder()
 			.setTitle('Random Cat Image')

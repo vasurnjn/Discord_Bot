@@ -24,7 +24,7 @@ client.on('messageCreate', message => {
   
   let msg = message.content
   if (message.author.bot) return;
-  let prefix = 'c!'
+  let prefix = '!'
 
   let args = message.content.slice(prefix.length).split(/ +/g);
   const commandName = args.shift().toLowerCase()
@@ -51,11 +51,11 @@ client.on('messageCreate', message => {
   if (commandName==='hi'){
         message.reply("hello")
   }
-  if (commandName==='!info') {
+  if (commandName==='info') {
         message.reply('Im a bot made by CodeCrafters')
     
   }
-  if (commandName==='!help'){
+  if (commandName==='help'){
   const helpEmbed = new Discord.EmbedBuilder()
   .setColor('#7e68be')
   .setDescription("https://codecrafters-hackbattle.glitch.me/")
